@@ -12,10 +12,16 @@ public class ButtonReceiver extends BroadcastReceiver {
     if (context != null && intent != null) {
       if (intent.hasExtra(Intent.EXTRA_KEY_EVENT)) {
         KeyEvent keyEvent = intent.getParcelableExtra(Intent.EXTRA_KEY_EVENT);
-        if (keyEvent != null && keyEvent.getAction() != KeyEvent.ACTION_DOWN) {
+        if (keyEvent != null && keyEvent.getAction() == KeyEvent.ACTION_UP) {
+          return; //we only handle down
+        }
+      } else if (intent.hasExtra("CUSTOMKEYE_KEYCODE_IS_Down")) {
+        boolean down = intent.getBooleanExtra("CUSTOMKEYE_KEYCODE_IS_Down", false);
+        if (!down) {
           return; //we only handle down
         }
       }
+
       Intent act = new Intent(context, MainActivity.class);
       act.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
       act.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

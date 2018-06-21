@@ -4,13 +4,14 @@
           xmlns:tools="http://schemas.android.com/tools">
 
   <!--for app to avoid 5sec delay in broadcast handling it needs this permission -->
-  <!--<uses-permission android:name="android.permission.STOP_APP_SWICHES"
+  <!--<uses-permission android:name="android.permission.STOP_APP_SWITCHES"
                        tools:ignore="ProtectedPermissions"/>-->
 
   <application
-    android:theme="@android:style/Theme.Holo.NoActionBar"
+    android:allowBackup="false"
     android:label="Hello"
-    tools:ignore="AllowBackup,GoogleAppIndexingWarning,MissingApplicationIcon">
+    android:theme="@android:style/Theme.Holo.NoActionBar"
+    tools:ignore="GoogleAppIndexingWarning,MissingApplicationIcon">
     <activity
       android:name=".MainActivity"
       android:showOnLockScreen="true">
@@ -30,6 +31,7 @@
         <action android:name="android.intent.action.PTT.down"/>
         <action android:name="ism.intent.action.PTT.down"/>
         <action android:name="com.kodiak.intent.action.PTT_BUTTON"/>
+        <action android:name="cn.ruggear.customkey.MyAction"/> <!--extra bool "CUSTOMKEYE_KEYCODE_IS_Down-->
       </intent-filter>
     </receiver>
   </application>
